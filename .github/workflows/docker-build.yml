@@ -54,8 +54,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           build-args: SOURCE_COMMIT=${{ github.sha }}
           tags: |
-            ghcr.io/GH-saltyH/valheim-server-docker:latest
-            saltyh/valheim-server-docker:latest
+            ghcr.io/gh-saltyh/valheim-server-docker:latest
+            gh-saltyh/valheim-server-docker:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
