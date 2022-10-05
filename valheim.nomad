@@ -26,7 +26,7 @@ job "valheim" {
         SERVER_PASS = "secret"
       }
       config {
-        image = "ghcr.io/lloesche/valheim-server"
+        image = "saltyh/valheim-server-docker"
         volumes = [
           "/var/lib/valheim/config:/config",
           "/var/lib/valheim/data:/opt/valheim"

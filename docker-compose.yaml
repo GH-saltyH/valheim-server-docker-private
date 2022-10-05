@@ -2,7 +2,7 @@ version: "3"
 
 services: 
   valheim: 
-    image: ghcr.io/gh-saltyh/valheim-server-docker-private
+    image: saltyh/valheim-server-docker:latest
     cap_add:
       - sys_nice
     volumes: 
