@@ -112,6 +112,7 @@ RUN groupadd -g "${PGID:-0}" -o valheim \
         python3-pkg-resources \
         python3-setuptools \
         libpulse-dev \
+        libpulse0 \        
         libatomic1 \
         libc6 \        
     && echo 'LANG="en_US.UTF-8"' > /etc/default/locale \
@@ -162,8 +163,9 @@ RUN groupadd -g "${PGID:-0}" -o valheim \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && date --utc --iso-8601=seconds > /usr/local/etc/build.date
 
-EXPOSE 2456-2457/udp
+EXPOSE 2456/udp
 EXPOSE 9001/tcp
 EXPOSE 80/tcp
 WORKDIR /
 CMD ["/usr/local/sbin/bootstrap"]
+#docker run --name valheim-server --cap-add=sys_nice --stop-timeout 120 -p 2456-2457:2456-2457/udp -v E:/DockerDesktop/volume-valheim-server/config:/config -v E:/DockerDesktop/volume-valheim-server/data:/opt/valheim -e SERVER_NAME="HOST by SHAKA" -e WORLD_NAME="Upper the Sea" -e SERVER_PASS="95162" -e POST_BOOTSTRAP_HOOK="apt-get update && apt-get install -y libpulse0 libpulse-dev libatomic1 libc6" saltyh/valheim-server-docker:latest
